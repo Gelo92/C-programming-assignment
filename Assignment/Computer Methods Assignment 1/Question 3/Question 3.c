@@ -1,0 +1,29 @@
+#include <stdio.h>
+#include <stdlib.h>
+void FindLargestSum(int IntegerArray[],int arraysize);
+int main(){ //1.3.b
+    int arraytester[9]={-3,4,2,1,6,-10,0,-4,3};
+    printf("Consider array:{-3,4,2,1,6,-10,0,-4,3} \n");
+    FindLargestSum(arraytester,sizeof(arraytester)/4);
+   return 0;
+}
+void FindLargestSum(int IntegerArray[],int arraysize){ //1.3.a
+    int x, index,maxval1=0,maxval2=0,mainmaxval;
+    int largestsum=0,start=0,end=0;
+    for(x=0;x<arraysize;x++){
+        for(index=x;index<arraysize;index++){
+                maxval1+=IntegerArray[index];
+                maxval2= maxval1-IntegerArray[index];
+                if(maxval1>maxval2 && maxval1>largestsum){
+                    mainmaxval=maxval1;
+                    start=x;
+                    end=index;
+					}
+                
+        }
+    largestsum=mainmaxval;
+      maxval1=0,maxval2=0;
+    }
+    printf("The largest contiguous partial sum of the array is %d. \n It starts at index positon %d and ends at index position %d.",largestsum,start,end);
+}
+
